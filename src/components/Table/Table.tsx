@@ -796,6 +796,9 @@ export const Table = (props: ITableProps) => {
                                                         onClick: (
                                                           e: SyntheticEvent<HTMLElement>
                                                         ) => {
+                                                          // Selecting an action from the dropdown with Enter key would let the Enter's default action
+                                                          // to submit a next focused element after this onClick. preventDefault() cancels the default action.
+                                                          e.preventDefault();
                                                           e.stopPropagation();
                                                           props.onInteraction!({
                                                             event: "click",
